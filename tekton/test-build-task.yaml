@@ -51,9 +51,6 @@ spec:
         privileged: true
       image: kabanero/nodejs-express:0.2
       command: ["/bin/bash","-c","cd extracted/user-app && ls && npm install --prefix user-app && npm install -g mocha && cd .. && npm test && npm test --prefix user-app"]
-      args:
-        - -c
-        - "cd /workspace/$gitsource && appsody test"
       env:
         - name: gitsource
           value: git-source
