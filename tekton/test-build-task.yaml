@@ -39,7 +39,7 @@ spec:
       command: ["/bin/bash"]
       args:
         - -c
-        - "cd /workspace/$gitsource && appsody --buildah test"
+        - "cd /workspace/$gitsource && appsody test"
       env:
         - name: gitsource
           value: git-source
