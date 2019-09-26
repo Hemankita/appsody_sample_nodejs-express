@@ -32,17 +32,31 @@ spec:
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
-    - name: npm-test
+    - name: appsody-test
       securityContext:
         privileged: true
-      image: node:7
-      command: ["/bin/bash","-c","cd extracted && ls && npm test"]
+      image: appsody/appsody-buildah
+      command: ["/bin/bash"]
+      args:
+        - -c
+        - "cd /workspace/$gitsource && appsody --buildah test"
       env:
         - name: gitsource
           value: git-source
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
+    # - name: npm-test
+    #   securityContext:
+    #     privileged: true
+    #   image: node:7
+    #   command: ["/bin/bash","-c","cd extracted && ls && npm test"]
+    #   env:
+    #     - name: gitsource
+    #       value: git-source
+    #   volumeMounts:
+    #     - mountPath: /var/lib/containers
+    #       name: varlibcontainers
     # - name: build-bud
     #   securityContext:
     #     privileged: true
