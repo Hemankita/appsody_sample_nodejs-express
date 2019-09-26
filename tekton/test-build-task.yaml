@@ -46,7 +46,7 @@ spec:
     - name: appsody-test
       securityContext:
         privileged: true
-      image: appsody/appsody-buildah
+      image: appsody/appsody-docker
       command: ["/bin/bash"]
       args:
         - -c
