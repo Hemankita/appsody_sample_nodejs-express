@@ -36,7 +36,7 @@ spec:
       securityContext:
         privileged: true
       image: node
-      command: ["/bin/bash","-c","cd extracted && pwd"]
+      command: ["/bin/bash","-c","cd extracted && ls && npm test"]
       env:
         - name: gitsource
           value: git-source
