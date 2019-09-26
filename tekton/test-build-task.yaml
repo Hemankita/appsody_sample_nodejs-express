@@ -32,21 +32,7 @@ spec:
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
-    # - name: appsody-test
-    #   securityContext:
-    #     privileged: true
-    #   image: appsody/appsody-buildah
-    #   command: ["/bin/bash"]
-    #   args:
-    #     - -c
-    #     - "cd /workspace/$gitsource && appsody test"
-    #   env:
-    #     - name: gitsource
-    #       value: git-source
-    #   volumeMounts:
-    #     - mountPath: /var/lib/containers
-    #       name: varlibcontainers
-    - name: appsody-test
+    - name: npm-test
       securityContext:
         privileged: true
       image: kabanero/nodejs-express:0.2
@@ -57,17 +43,20 @@ spec:
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
-    # - name: npm-test
-    #   securityContext:
-    #     privileged: true
-    #   image: node:7
-    #   command: ["/bin/bash","-c","cd extracted && ls && npm test"]
-    #   env:
-    #     - name: gitsource
-    #       value: git-source
-    #   volumeMounts:
-    #     - mountPath: /var/lib/containers
-    #       name: varlibcontainers
+    - name: appsody-test
+      securityContext:
+        privileged: true
+      image: appsody/appsody-buildah
+      command: ["/bin/bash"]
+      args:
+        - -c
+        - "cd /workspace/$gitsource && appsody test"
+      env:
+        - name: gitsource
+          value: git-source
+      volumeMounts:
+        - mountPath: /var/lib/containers
+          name: varlibcontainers
     # - name: build-bud
     #   securityContext:
     #     privileged: true
