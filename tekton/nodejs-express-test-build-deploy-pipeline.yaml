@@ -19,13 +19,13 @@ spec:
         outputs:
         - name: docker-image
           resource: docker-image
-    # - name: deploy-task
-    #   taskRef:
-    #     name: java-spring-boot2-deploy-task
-    #   runAfter: [build-test-task]
-    #   resources:
-    #     inputs:
-    #     - name: git-source
-    #       resource: git-source
-    #     - name: docker-image
-    #       resource: docker-image
+    - name: deploy-task
+      taskRef:
+        name: java-spring-boot2-deploy-task
+      runAfter: [build-test-task]
+      resources:
+        inputs:
+        - name: git-source
+          resource: git-source
+        - name: docker-image
+          resource: docker-image
