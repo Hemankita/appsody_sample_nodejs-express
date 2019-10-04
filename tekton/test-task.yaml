@@ -12,8 +12,6 @@ spec:
         default: /workspace/extracted/Dockerfile
       - name: pathToContext
         default: /workspace/extracted
-      - name: pathToGitSource
-        default: /workspace/git-source
   outputs:
     resources:
       - name: docker-image
@@ -44,3 +42,6 @@ spec:
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
+  volumes:
+    - name: varlibcontainers
+      emptyDir: {}
